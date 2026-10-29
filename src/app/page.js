@@ -1,69 +1,538 @@
-import Image from "next/image";
+const meals = [
+  {
+    name: "स्टैंडर्ड मील",
+    price: "₹80",
+    color: "red",
+    items: [
+      "दाल",
+      "2 प्रकार की सब्जियाँ",
+      "4 चपातियाँ",
+      "उबले हुए चावल",
+      "अचार / चटनी",
+      "प्याज का सलाद",
+    ],
+  },
+  {
+    name: "प्रीमियम मील",
+    price: "₹100",
+    color: "green",
+    items: [
+      "दाल",
+      "2 सब्जियाँ",
+      "4 चपातियाँ",
+      "उबले हुए चावल",
+      "रायता",
+      "पापड़",
+      "अचार / चटनी",
+      "ताजा सलाद",
+    ],
+  },
+  {
+    name: "एग्जीक्यूटिव मील",
+    price: "₹120",
+    color: "blue",
+    items: [
+      "दाल",
+      "2 सब्जियाँ",
+      "4 चपातियाँ",
+      "उबले हुए चावल",
+      "रायता",
+      "पापड़",
+      "अचार / चटनी",
+      "ताजा सलाद",
+      "मिठाई",
+    ],
+  },
+];
+
+const plans = [
+  {
+    name: "क्लासिक",
+    lunch: "₹2,200",
+    dinner: "₹4,000",
+    items: [
+      "दाल",
+      "1 सब्जी (2 विकल्प)",
+      "4 चपातियाँ",
+      "सादे चावल / जीरा राइस",
+      "अचार / चटनी",
+      "ताजा सलाद",
+    ],
+  },
+  {
+    name: "प्रीमियम",
+    lunch: "₹3,000",
+    dinner: "₹5,500",
+    items: [
+      "दाल",
+      "2 सब्जियाँ",
+      "4 चपातियाँ",
+      "सादे चावल / जीरा राइस",
+      "रायता",
+      "पापड़",
+    ],
+  },
+];
+
+const phone = "7987953005";
+
+const whatsapp = `https://wa.me/91${phone}?text=${encodeURIComponent(
+  "नमस्ते अपना ढाबा, मुझे Corporate Meal / Tiffin के बारे में जानकारी चाहिए।"
+)}`;
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.js
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
+    <main>
+      {/* NAVBAR */}
+      <header className="nav">
+        <div className="nav-inner">
+
+          <a href="#home" className="logo">
+            <span>अ</span>
+
+            <div>
+              <b>अपना ढाबा</b>
+              <small>Corporate Meals</small>
+            </div>
+          </a>
+
+          <nav>
+            <a href="#home">होम</a>
+            <a href="#menu">मेन्यू</a>
+            <a href="#plans">टिफिन</a>
+            <a href="#about">हमारे बारे में</a>
+            <a href="#contact">संपर्क</a>
+          </nav>
+
+          <div className="nav-actions">
             <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              className="whatsapp mini"
+              href={whatsapp}
+              target="_blank"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
+              WhatsApp
+            </a>
+
             <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              className="call mini"
+              href={`tel:${phone}`}
             >
-              Learning
-            </a>{" "}
-            center.
+              📞 Call
+            </a>
+          </div>
+
+        </div>
+      </header>
+
+      {/* HERO */}
+      <section id="home" className="hero">
+
+        <div className="hero-inner">
+
+          <div className="hero-text">
+
+            <div className="pill">
+              🌿 100% शाकाहारी • घर जैसा स्वाद
+            </div>
+
+            <h1>
+              स्वाद ऐसा कि
+              <br />
+
+              <em>हर कोई कहे,</em>
+
+              <br />
+
+              फिर से आना है!
+            </h1>
+
+            <p>
+              ऑफिस, कॉर्पोरेट टीम और रोज़ाना टिफिन
+              के लिए ताज़ा, साफ-सुथरा और भरपेट भोजन।
+            </p>
+
+            <div className="hero-buttons">
+
+              <a
+                className="gold-btn"
+                href="#menu"
+              >
+                मेन्यू देखें ↓
+              </a>
+
+              <a
+                className="outline-btn"
+                href={whatsapp}
+                target="_blank"
+              >
+                💬 WhatsApp पर पूछें
+              </a>
+
+            </div>
+
+            <div className="trust">
+              <span>✓ साफ-सफाई</span>
+              <span>✓ शाकाहारी</span>
+              <span>✓ Bulk Orders</span>
+            </div>
+
+          </div>
+
+          {/* FOOD VISUAL */}
+          <div className="dish">
+
+            <div className="dish-ring">
+
+              <div className="dish-food">
+                🍛
+              </div>
+
+            </div>
+
+            <div className="floating f1">
+              🥗 ताजा सलाद
+            </div>
+
+            <div className="floating f2">
+              🫓 गरम रोटी
+            </div>
+
+            <div className="dish-caption">
+              <b>Corporate Meals</b>
+              <span>₹80 से शुरू</span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* QUICK INFO */}
+      <section className="quick">
+
+        <div>
+          <strong>🍱 3 Meal Options</strong>
+          <span>Standard से Executive तक</span>
+        </div>
+
+        <div>
+          <strong>👥 Minimum 10 Meals</strong>
+          <span>Corporate & bulk orders</span>
+        </div>
+
+        <div>
+          <strong>📞 7987953005</strong>
+          <span>Order / Enquiry</span>
+        </div>
+
+      </section>
+
+      {/* MENU */}
+      <section id="menu" className="section">
+
+        <div className="heading">
+
+          <label>हमारा मेन्यू</label>
+
+          <h2>
+            Corporate Meal Plans
+          </h2>
+
+          <p>
+            अपनी जरूरत के हिसाब से अपना मील चुनिए।
           </p>
+
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <div className="meal-grid">
+
+          {meals.map((meal) => (
+
+            <article
+              className={`meal ${meal.color}`}
+              key={meal.name}
+            >
+
+              <div className="meal-top">
+
+                <div>
+                  <h3>{meal.name}</h3>
+                  <small>Corporate Meal</small>
+                </div>
+
+                <strong>
+                  {meal.price}
+                  <small> + GST</small>
+                </strong>
+
+              </div>
+
+              <div className="meal-photo">
+                🍛
+              </div>
+
+              <ul>
+
+                {meal.items.map((item) => (
+                  <li key={item}>
+                    ✓ {item}
+                  </li>
+                ))}
+
+              </ul>
+
+              <a
+                href={whatsapp}
+                target="_blank"
+              >
+                WhatsApp से Order करें →
+              </a>
+
+            </article>
+
+          ))}
+
         </div>
-      </main>
-    </div>
+
+      </section>
+
+      {/* MONTHLY PLANS */}
+      <section id="plans" className="plans">
+
+        <div className="heading">
+
+          <label>
+            मासिक टिफिन प्लान
+          </label>
+
+          <h2>
+            Monthly Tiffin Plans
+          </h2>
+
+          <p>
+            पूरे महीने का आसान, स्वादिष्ट और भरोसेमंद खाना।
+          </p>
+
+        </div>
+
+        <div className="plan-grid">
+
+          {plans.map((plan) => (
+
+            <article
+              className="plan"
+              key={plan.name}
+            >
+
+              <div className="plan-head">
+
+                <h3>
+                  {plan.name} प्लान
+                </h3>
+
+                <span>
+                  Monthly Tiffin
+                </span>
+
+              </div>
+
+              <div className="plan-price">
+
+                <div>
+                  <small>केवल लंच</small>
+                  <b>{plan.lunch}</b>
+                </div>
+
+                <div>
+                  <small>लंच और डिनर</small>
+                  <b>{plan.dinner}</b>
+                </div>
+
+              </div>
+
+              <ul>
+
+                {plan.items.map((item) => (
+                  <li key={item}>
+                    ✓ {item}
+                  </li>
+                ))}
+
+              </ul>
+
+              <a
+                href={whatsapp}
+                target="_blank"
+              >
+                प्लान बुक करें
+              </a>
+
+            </article>
+
+          ))}
+
+        </div>
+
+      </section>
+
+      {/* ABOUT */}
+      <section id="about" className="about">
+
+        <div className="about-img">
+
+          <img
+            src="/menu-poster.jpg"
+            alt="Apna Dhaba menu"
+          />
+
+        </div>
+
+        <div>
+
+          <label>
+            अपना ढाबा
+          </label>
+
+          <h2>
+            खाना सिर्फ पेट नहीं,
+            भरोसा भी भरता है।
+          </h2>
+
+          <p>
+            हमारा फोकस साफ-सुथरे, शाकाहारी और
+            घर जैसे स्वाद वाले भोजन पर है।
+            Corporate teams, offices और monthly
+            tiffin customers के लिए आसान meal plans
+            उपलब्ध हैं।
+          </p>
+
+          <div className="about-points">
+
+            <span>🌿 ताज़ी सामग्री</span>
+
+            <span>🧼 स्वच्छ रसोई</span>
+
+            <span>🍱 समय पर Meal</span>
+
+            <span>🤝 Bulk Orders</span>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* CTA */}
+      <section className="cta">
+
+        <div>
+
+          <label>
+            आज ही ऑर्डर करें
+          </label>
+
+          <h2>
+            आपका खाना,
+            हमारी जिम्मेदारी ❤️
+          </h2>
+
+          <p>
+            Corporate orders, monthly tiffin
+            और bulk meals के लिए सीधे संपर्क करें।
+          </p>
+
+        </div>
+
+        <div className="cta-buttons">
+
+          <a
+            className="gold-btn"
+            href={`tel:${phone}`}
+          >
+            📞 {phone}
+          </a>
+
+          <a
+            className="whatsapp"
+            href={whatsapp}
+            target="_blank"
+          >
+            💬 WhatsApp Order
+          </a>
+
+        </div>
+
+      </section>
+
+      {/* CONTACT */}
+      <section id="contact" className="contact">
+
+        <div>
+
+          <label>
+            हमसे मिलिए
+          </label>
+
+          <h2>
+            Location & Contact
+          </h2>
+
+          <p>
+            📍 अंधमुख बायपास, जबलपुर
+          </p>
+
+          <p>
+            📞{" "}
+            <a href={`tel:${phone}`}>
+              {phone}
+            </a>
+          </p>
+
+        </div>
+
+        <div className="map-card">
+
+          <span>📍</span>
+
+          <b>
+            अंधमुख बायपास
+          </b>
+
+          <small>
+            Jabalpur, Madhya Pradesh
+          </small>
+
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=Andhmukh+Bypass+Jabalpur"
+            target="_blank"
+          >
+            Google Maps पर खोलें ↗
+          </a>
+
+        </div>
+
+      </section>
+
+      {/* FOOTER */}
+      <footer>
+
+        <div className="footer-logo">
+          अपना ढाबा
+        </div>
+
+        <p>
+          स्वाद ऐसा कि हर कोई कहे,
+          फिर से आना है!
+        </p>
+
+        <small>
+          © 2026 Apna Dhaba • Corporate Meals & Tiffin
+          {" "}Apna Dhaba • Corporate Meals & Tiffin
+        </small>
+
+      </footer>
+
+    </main>
   );
 }
